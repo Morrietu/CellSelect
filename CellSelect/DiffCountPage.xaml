@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CellSelect.ViewModels" 
+             xmlns:local="clr-namespace:CellSelect.Helper_Classes"
+             x:Class="CellSelect.DiffCountPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:NullableIntConverter x:Key="NullableIntConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModel:DiffCountViewModel/>
+    </ContentPage.BindingContext>
+    
+    <StackLayout Padding="50, 0, 50, 0">
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="segDisplayButton"
+                    Text="{Binding Seg, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Start"/>
+
+            <Label Text="Normal"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="30"/>
+
+            <Button x:Name="lymphDisplayButton"
+                    Text="{Binding Lymph, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="segEnterButton"
+                    Command="{Binding Commands[SegCountOnClick]}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Seg"
+                    HorizontalOptions="Start"/>
+
+            <Button x:Name="monoDisplayButton"
+                    Text="{Binding Mono, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                   Grid.Column="2"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Center"/>
+
+            <Button x:Name="lymphEnterButton"
+                    Command="{Binding Commands[LymphCountOnClick]}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Lymph"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="eoDisplayButton"
+                    Text="{Binding Eo, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Start"/>
+
+            <Button x:Name="monoEnterButton"
+                    Command="{Binding Commands[MonoCountOnClick]}"
+                   Grid.Column="2"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Mono"
+                    HorizontalOptions="Center"/>
+
+            <Button x:Name="basoDisplayButton"
+                    Text="{Binding Baso, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="eoEnterButton"
+                    Command="{Binding Commands[EoCountOnClick]}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Eo"
+                    HorizontalOptions="Start"/>
+
+            <Entry Placeholder="Title"
+                   Text="{Binding CountTitle}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="30"
+                   WidthRequest="100"
+               HorizontalTextAlignment="Center"
+               MaxLength="8"/>
+
+            <Button x:Name="basoEnterButton"
+                    Command="{Binding Commands[BasoCountOnClick]}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Baso"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 0, 0, 0">
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  VerticalOptions="Center"/>
+
+            <Button x:Name="centerCircleButton" 
+                HeightRequest="80" 
+                WidthRequest="80" 
+                BorderRadius="40"
+                HorizontalOptions="Center"
+                BackgroundColor="LightCoral"/>
+
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  HorizontalOptions="End"
+                  VerticalOptions="Center"/>
+        </Grid>
+
+        <Label Text="Cell Differential"
+               HorizontalOptions="Center"
+               Margin="0, 0"/>
+
+        <Grid Margin="0, 0, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="metaDisplayButton"
+                    Text="{Binding Meta, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Start"/>
+
+            <Entry Placeholder="Fluid"
+                   Text="{Binding FluidType}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="30"
+                   WidthRequest="100"
+               HorizontalTextAlignment="Center"
+               MaxLength="8"/>
+
+            <Button x:Name="myeloDisplayButton"
+                    Text="{Binding Myelo, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="metaEnterButton"
+                    Command="{Binding Commands[MetaCountOnClick]}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Meta"
+                    HorizontalOptions="Start"/>
+
+            <Button x:Name="blastDisplayButton"
+                    Text="{Binding Blast, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                   Grid.Column="2"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Center"/>
+
+            <Button x:Name="myeloEnterButton"
+                    Command="{Binding Commands[MyeloCountOnClick]}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Myelo"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="proDisplayButton"
+                    Text="{Binding Pro, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Start"/>
+
+            <Button x:Name="blastEnterButton"
+                    Command="{Binding Commands[BlastCountOnClick]}"
+                   Grid.Column="2"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Blast"
+                    HorizontalOptions="Center"/>
+
+            <Button x:Name="aLymphDisplayButton"
+                    Text="{Binding ALymph, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Grid Margin="0, 10, 0, 0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="proEnterButton"
+                    Command="{Binding Commands[ProCountOnClick]}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="Pro"
+                    HorizontalOptions="Start"/>
+
+            <Label Text="Abnormal"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="30"/>
+
+            <Button x:Name="aLymphEnterButton"
+                    Command="{Binding Commands[ALymphCountOnClick]}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="30"
+                    BackgroundColor="LightCoral"
+                    Text="aLymph"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Button x:Name="saveDifferentialButton" 
+                Command="{Binding Commands[SaveCount]}"
+                BackgroundColor="LightCoral"
+                Text="Save Differential"
+                Margin="0, 10"/>
+
+    </StackLayout>
+</ContentPage>

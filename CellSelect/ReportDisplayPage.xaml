@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CellSelect.ViewModels" 
+             x:Class="CellSelect.ReportDisplayPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:ReportDisplayViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <StackLayout Padding="10, 10, 10, 10">
+        <Label Text="Report"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+
+
+            <ListView x:Name="cellCountListView"
+                      ItemsSource="{Binding CellReport}">
+                <ListView.Header>
+                    <Label Text="Cell Counts"
+                           FontAttributes="Bold"
+                           TextColor="LightCoral"/>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding CountTitle}"
+                                  Detail="{Binding FluidType}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <ListView x:Name="diffCountListView"
+                      ItemsSource="{Binding DiffReport}">
+                <ListView.Header>
+                    <Label Text="Differential Counts"
+                           FontAttributes="Bold"
+                           TextColor="LightCoral"/>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding DiffTitle}"
+                                  Detail="{Binding FluidType}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Label Text="Date Created:"
+                   Grid.Column="1"
+                   VerticalOptions="Center"/>
+            <DatePicker Date="{Binding StartDate}"
+                        Grid.Column="2"/>
+        </Grid>
+
+        <Grid Margin="0, 30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Label Text="Date Modified:"
+                   Grid.Column="1"
+               VerticalOptions="Center"/>
+            <DatePicker Date="{Binding EndDate}"
+                        Grid.Column="2"/>
+        </Grid>
+
+        
+    </StackLayout>
+</ContentPage>

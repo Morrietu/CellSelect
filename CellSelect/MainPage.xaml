@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CellSelect.MainPage">
+
+    <StackLayout Padding="50, 60, 50, 0">
+        <Button x:Name="cellCountButton"
+                Text="Perform Cell Count"
+                TextTransform="None"
+                BackgroundColor="LightCoral"
+                Command="{Binding cellCountClick}"/>
+        
+        <Button x:Name="diffCountButton"
+                Text="Perform Differential Count"
+                TextTransform="None"
+                BackgroundColor="LightCoral"
+                Margin="0, 30, 0, 80"
+                Command="{Binding diffCountClick}"/>
+
+        <Grid>
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  VerticalOptions="Center"/>
+            
+            <Button x:Name="centerCircleButton" 
+                HeightRequest="80" 
+                WidthRequest="80" 
+                BorderRadius="40"
+                HorizontalOptions="Center"
+                BackgroundColor="LightCoral"/>
+            
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  HorizontalOptions="End"
+                  VerticalOptions="Center"/>
+        </Grid>
+
+        <Label Text="Welcome to CellSelect"
+               HorizontalOptions="Center"
+               Margin="0, 10"/>
+
+        <Button x:Name="savedSessionsButton"
+                Text="Saved Sessions"
+                TextTransform="None"
+                BackgroundColor="LightCoral"
+                Margin="0, 70, 0, 0"
+                Command="{Binding savedSessionsClick}"/>
+        <Button x:Name="runReportsButton"
+                Text="Run Reports"
+                TextTransform="None"
+                BackgroundColor="LightCoral"
+                Margin="0, 30, 0, 0"
+                Command="{Binding runReportsClick}"/>
+    </StackLayout>
+</ContentPage>

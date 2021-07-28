@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CellSelect.ViewModels" 
+             xmlns:local="clr-namespace:CellSelect.Helper_Classes"
+             x:Class="CellSelect.CellCountPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:NullableIntConverter x:Key="NullableIntConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModel:CellCountViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="50, 60, 50, 0">
+
+        <Grid Margin="30, 30, 0, 30">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="whiteCellDisplayButton"
+                    Text="{Binding WhiteCount, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="50"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="Start"/>
+
+            <Line Stroke="Black"
+                  X1="0"
+                  Y1="90"
+                  X2="0"
+                  Y2="0"
+                  Grid.Column="2"
+                  Grid.ColumnSpan="41"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"/>
+
+            <Button x:Name="redCellDisplayButton"
+                    Text="{Binding RedCount, Mode=TwoWay, Converter={StaticResource NullableIntConverter}}"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="40"
+                    BorderWidth="1"
+                    BorderColor="LightCoral"
+                    HorizontalOptions="End"/>
+        </Grid>
+
+        <Entry Placeholder="Title"
+               Text="{Binding CountTitle}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+               WidthRequest="100"
+               HorizontalTextAlignment="Center"
+               MaxLength="8"/>
+
+        <Grid Margin="0, 20, 0, 0">
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  VerticalOptions="Center"/>
+
+            <Button x:Name="centerCircleButton" 
+                HeightRequest="80" 
+                WidthRequest="80" 
+                BorderRadius="40"
+                HorizontalOptions="Center"
+                BackgroundColor="LightCoral"/>
+
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  HorizontalOptions="End"
+                  VerticalOptions="Center"/>
+        </Grid>
+
+        <Label Text="Cell Count"
+               HorizontalOptions="Center"
+               Margin="0, 10"/>
+
+        <Entry Placeholder="Fluid"
+               Text="{Binding FluidType}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+               WidthRequest="100"
+               HorizontalTextAlignment="Center"
+               MaxLength="8"/>
+
+
+        <Grid Margin="30, 10, 0, 10">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="whiteCellCountButton"
+                    Command="{Binding Commands[WhiteCountOnClick]}"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="50"
+                    BackgroundColor="LightCoral"
+                    HorizontalOptions="Start"
+                    Text="W"
+                    TextTransform="Uppercase"
+                    FontSize="Large"
+                    FontAttributes="Bold"/>
+
+            <Button x:Name="redCellCountButton"
+                    Command="{Binding Commands[RedCountOnClick]}"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="40"
+                    BackgroundColor="LightCoral"
+                    HorizontalOptions="End"
+                    Text="R"
+                    TextTransform="Uppercase"
+                    FontSize="Large"
+                    FontAttributes="Bold"/>
+        </Grid>
+
+        <Button x:Name="saveCountButton" 
+                Command="{Binding Commands[SaveCount]}"
+                BackgroundColor="LightCoral"
+                Text="Save Count"
+                Margin="0, 40"/>
+
+    </StackLayout>
+</ContentPage>

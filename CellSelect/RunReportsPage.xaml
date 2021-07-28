@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewModel="clr-namespace:CellSelect.ViewModels" 
+             x:Class="CellSelect.RunReportsPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:ReportsViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10, 10, 10, 10">
+        <Label Text="Report"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+
+        <Label Text="Count type:"/>
+
+        <Grid Margin="0, 40, 50, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton x:Name="cellRadioButtion"
+                         IsChecked="{Binding CellRadio}"
+                         Grid.Column="1"/>
+            <Label Text="Cell"
+                   Grid.Column="2"
+                   VerticalOptions="Center"/>
+            <RadioButton x:Name="diffRadioButtion"
+                         IsChecked="{Binding DiffRadio}"
+                         Grid.Column="3"/>
+            <Label Text="Diff"
+                   Grid.Column="4"
+                   VerticalOptions="Center"/>
+            <RadioButton x:Name="bothRadioButtion"
+                         IsChecked="{Binding BothRadio}"
+                         Grid.Column="5"/>
+            <Label Text="Both"
+                   Grid.Column="6"
+                   VerticalOptions="Center"/>
+        </Grid>
+
+        <Grid Margin="40, 70, 40, 0">
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  VerticalOptions="Center"/>
+
+            <Button x:Name="centerCircleButton" 
+                HeightRequest="80" 
+                WidthRequest="80" 
+                BorderRadius="40"
+                HorizontalOptions="Center"
+                BackgroundColor="LightCoral"/>
+
+            <Line Stroke="Black"
+                  X1="90"
+                  Y1="0"
+                  X2="0"
+                  Y2="0"
+                  HorizontalOptions="End"
+                  VerticalOptions="Center"/>
+        </Grid>
+
+        <Label Text="Reports"
+               HorizontalOptions="Center"
+               Margin="0, 10"/>
+
+        <Label Text="Start Date:"
+               Margin="0, 30, 0, 0"/>
+        <DatePicker  x:Name="startDatePicker"
+                     Date="{Binding StartDate}"/>
+
+        <Label Text="Date Modified:"
+               Margin="0, 30, 0, 0"/>
+        <DatePicker x:Name="endDatePicker"
+            Date="{Binding EndDate}"/>
+
+        <Button x:Name="genReportButton" 
+                BackgroundColor="LightCoral"
+                Text="Generate Report"
+                Command="{Binding genReportClick}"
+                Margin="40, 80, 40, 0"/>
+
+    </StackLayout>
+</ContentPage>
